@@ -5,10 +5,9 @@ import csv
 import time
 
 driver = webdriver.Chrome()
-driver.get('https://tienichsv.ou.edu.vn/')
+driver.get('https://lms.ou.edu.vn/')
+driver.execute_script("window.scrollTo(0, 400)")
 driver.maximize_window()
-time.sleep(5)
-driver.find_element(By.XPATH, "//span[text()='Đăng nhập tài khoản HCMCOU-SSO']").click()
 time.sleep(5)
 
 driver.find_element(By.CSS_SELECTOR, 'a.main-btn').click()
@@ -19,7 +18,7 @@ time.sleep(5)
 usertype = Select(driver.find_element(By.ID, 'form-usertype'))
 usertype.select_by_index(0)
 
-with open('test.csv', 'r', newline = '') as f:
+with open('Account.csv', 'r', newline = '') as f:
     reader = csv.DictReader(f)
     for row in reader:
         user = row['user']
